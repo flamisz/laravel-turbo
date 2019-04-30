@@ -34,6 +34,11 @@ return [
     */
 
     'channels' => [
+        'heroku' => [
+            'driver' => 'errorlog',
+            'level' => 'debug',
+        ],
+
         'stack' => [
             'driver' => 'stack',
             'channels' => ['daily'],
