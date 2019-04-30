@@ -41,9 +41,13 @@ class Task extends Model
         return $this->hasMany(Time::class)->latest('start');
     }
 
-    public function getLengthAttribute($value)
+    public function getFormattedLengthAttribute()
     {
-        return CarbonInterval::seconds($value)->cascade()->forHumans();
+        if ($this->length == 0) {
+            return '0 seconds';
+        }
+
+        return CarbonInterval::seconds($this->length)->cascade()->forHumans();
     }
 
     public function hasUnstoppedTime()
