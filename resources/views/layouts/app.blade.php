@@ -27,7 +27,6 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
-
                 <div class="d-flex flex-grow-1">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
