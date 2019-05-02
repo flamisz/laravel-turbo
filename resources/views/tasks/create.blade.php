@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="/tasks">
+                    <form method="POST" action="/tasks" id="createTaskForm">
                         @csrf
 
                         <div class="form-group row">

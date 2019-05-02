@@ -39,6 +39,12 @@ class TaskController extends Controller
     {
         $task = auth()->user()->tasks()->create($this->validateRequest());
 
+        if (request()->ajax()) {
+            return response()->json([
+                'redirect' => $task->path()
+            ]);
+        }
+
         return redirect($task->path());
     }
 

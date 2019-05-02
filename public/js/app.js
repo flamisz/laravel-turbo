@@ -115,6 +115,38 @@ Copyright © 2018 Basecamp, LLC
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+var form = document.getElementById("createTaskForm");
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  var formData = new FormData(event.target);
+  data = {
+    title: formData.get('title'),
+    description: formData.get('description')
+  };
+  postData("/tasks", data).then(function (data) {
+    return Turbolinks.visit(data.redirect);
+  })["catch"](function (error) {
+    return console.error(error);
+  });
+});
+
+function postData() {
+  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var data = arguments.length > 1 ? arguments[1] : undefined;
+  var token = document.head.querySelector('meta[name="csrf-token"]');
+  return fetch(url, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-CSRF-TOKEN': token.content
+    }
+  }).then(function (response) {
+    return response.json();
+  });
+}
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
