@@ -8,12 +8,14 @@
 
 Small project to try out Turbolinks (and StimulusJs) with Laravel and compare the user experience with and without it. The different versions of the app are on different branches.
 
-Branches:
+**Branches:**
+
 [develop-base](https://github.com/flamisz/laravel-turbo/tree/develop-base)
 
 [develop-with-turbo](https://github.com/flamisz/laravel-turbo/tree/develop-with-turbo)
 
-The running apps:
+**The running apps:**
+
 [Nojs Version](https://laravel-turbo.herokuapp.com)
 
 [Turbolinks Version](https://laravel-turbo-2.herokuapp.com)
