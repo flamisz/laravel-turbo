@@ -1,32 +1,68 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
+document.addEventListener("turbolinks:load", function() {
+    var form = document.getElementById("createTaskForm")
 
-window.Vue = require('vue');
+    if (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault()
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+            var formData = new FormData(event.target)
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+            data = {
+                title: formData.get('title'),
+                description: formData.get('description')
+            }
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+            postData(`/tasks`, data)
+                .then(data => {
+                    if (data.redirect) {
+                        Turbolinks.visit(data.redirect)
+                    }
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+                    if (data.errors){
+                        let errorKey = Object.keys(data.errors)[0]
+                        document.getElementById("createTaskFormErrorText").textContent = data.errors[errorKey][0]
+                        document.getElementById("createTaskFormError").classList.remove('d-none')
+                    }
+                })
+                .catch(error => console.error(error))
+        })
+    }
 
-const app = new Vue({
-    el: '#app',
-});
+    var form2 = document.getElementById("toggleTimeForm")
+
+    if (form2) {
+        form2.addEventListener("submit", function (event) {
+            event.preventDefault()
+            let url = event.target.dataset.url
+            let reloadUrl = event.target.dataset.reloadUrl
+            let token = document.head.querySelector('meta[name="csrf-token"]')
+
+            return fetch(url, {
+                method: "POST",
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRF-TOKEN': token.content
+                }
+            })
+            .then(response => Turbolinks.visit(reloadUrl))
+        })
+    }
+})
+
+
+
+function postData(url = ``, data) {
+    let token = document.head.querySelector('meta[name="csrf-token"]')
+
+    return fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': token.content
+        }
+    })
+    .then(response => response.json())
+}
