@@ -28,6 +28,26 @@ document.addEventListener("turbolinks:load", function() {
                 .catch(error => console.error(error))
         })
     }
+
+    var form2 = document.getElementById("toggleTimeForm")
+
+    if (form2) {
+        form2.addEventListener("submit", function (event) {
+            event.preventDefault()
+            let url = event.target.dataset.url
+            let reloadUrl = event.target.dataset.reloadUrl
+            let token = document.head.querySelector('meta[name="csrf-token"]')
+
+            return fetch(url, {
+                method: "POST",
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRF-TOKEN': token.content
+                }
+            })
+            .then(response => Turbolinks.visit(reloadUrl))
+        })
+    }
 })
 
 

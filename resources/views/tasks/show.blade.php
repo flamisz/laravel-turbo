@@ -11,13 +11,15 @@
                     </div>
 
                     <div>
-                        <form method="POST" action="{{ $task->path() . '/toggle' }}">
+                        <form method="POST"
+                                action="{{ $task->path() . '/toggle' }}"
+                                id="toggleTimeForm"
+                                data-url="{{ $task->path() . '/toggle' }}"
+                                data-reload-url="{{ $task->path() }}">
                             @csrf
 
                             <button
                                 type="submit"
-                                data-action="click->task-show#toggle"
-                                data-target="task-show.button"
                                 class="btn{{ $task->hasUnstoppedTime() ? ' btn-outline-danger' : ' btn-outline-success' }} btn-sm">{{ $task->hasUnstoppedTime() ? 'Stop' : 'Start' }}</button>
                         </form>
                     </div>
