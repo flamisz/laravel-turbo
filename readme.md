@@ -6,11 +6,15 @@
 
 ## The Project
 
-Small project to try out Turbolinks (and StimulusJs) with Laravel and compare the user experience with and without it. The app running on heroku free Dyno.
+Small project to try out Turbolinks (and StimulusJs) with Laravel and compare the user experience with and without it. The different versions of the app are on different branches
 
 [Nojs Version](https://laravel-turbo.herokuapp.com)
 
+[branch develop-base](https://github.com/flamisz/laravel-turbo/tree/develop-base)
+
 [Turbolinks Version](https://laravel-turbo-2.herokuapp.com)
+
+[branch develop-with-turbo](https://github.com/flamisz/laravel-turbo/tree/develop-with-turbo)
 
 Add Stimulus is coming soon...
 
