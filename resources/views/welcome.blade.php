@@ -40,6 +40,13 @@
                 top: 18px;
             }
 
+            .top-center {
+                position: absolute;
+                top: 18px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+
             .content {
                 text-align: center;
             }
@@ -61,6 +68,11 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .sub-text {
+                margin: 30px auto;
+                max-width: 36rem;
+            }
         </style>
     </head>
     <body>
@@ -79,19 +91,29 @@
                 </div>
             @endif
 
+            <div class="top-center">
+                Current app: {{ config('app.name', 'Laravel') }}
+            </div>
+
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel <small>with</small> Turbolinks
+                </div>
+
+                <div class="sub-text">
+                    Small project to try out Turbolinks (and StimulusJs) with Laravel and compare the user experience with and without it. The app running on heroku free Dyno.
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://laravel-turbo.herokuapp.com">NoJS</a>
+                    <a href="https://laravel-turbo-2.herokuapp.com">with Turbolinks</a>
+                    <a href="https://laravel-turbo-3.herokuapp.com">add Stimulusjs (soon...)</a>
+                    <a href="https://github.com/flamisz/laravel-turbo">Source on Github</a>
+                    <a href="https://mobile.twitter.com/flamisz">Twitter</a>
+                </div>
+
+                <div class="sub-text">
+                    Test user: test@test.com / password
                 </div>
             </div>
         </div>
