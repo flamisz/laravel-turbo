@@ -20,7 +20,7 @@ Small project to try out Turbolinks (and StimulusJs) with Laravel and compare th
 
 [Turbolinks Version](https://laravel-turbo-2.herokuapp.com)
 
-StimulusJs: coming soon...
+StimulusJs: I tried in an other [repo](https://github.com/flamisz/lturbo)
 
 ## The App
 

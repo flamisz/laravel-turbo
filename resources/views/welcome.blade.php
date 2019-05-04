@@ -98,13 +98,12 @@
                 </div>
 
                 <div class="sub-text">
-                    Small project to try out Turbolinks (and StimulusJs) with Laravel and compare the user experience with and without it. The app running on heroku free Dyno.
+                    Small project to try out Turbolinks with Laravel and compare the user experience with and without it. The app running on heroku free Dyno.
                 </div>
 
                 <div class="links">
                     <a href="https://laravel-turbo.herokuapp.com">NoJS</a>
                     <a href="https://laravel-turbo-2.herokuapp.com">with Turbolinks</a>
-                    <a href="https://laravel-turbo-3.herokuapp.com">add Stimulusjs (soon...)</a>
                     <a href="https://github.com/flamisz/laravel-turbo">Source on Github</a>
                     <a href="https://mobile.twitter.com/flamisz">Twitter</a>
                 </div>
