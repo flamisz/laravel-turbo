@@ -25,7 +25,6 @@
             }
 
             .flex-center {
-                align-items: center;
                 display: flex;
                 justify-content: center;
             }
@@ -40,19 +39,13 @@
                 top: 18px;
             }
 
-            .top-center {
-                position: absolute;
-                top: 18px;
-                font-size: 13px;
-                font-weight: 600;
-            }
-
             .content {
                 text-align: center;
+                margin-top: 30px;
             }
 
             .title {
-                font-size: 84px;
+                font-size: 64px;
             }
 
             .links > a {
@@ -70,8 +63,12 @@
             }
 
             .sub-text {
-                margin: 30px auto;
+                margin: 20px auto;
                 max-width: 36rem;
+            }
+
+            .strong {
+                font-weight: 600;
             }
         </style>
     </head>
@@ -91,13 +88,13 @@
                 </div>
             @endif
 
-            <div class="top-center">
-                Current app: {{ config('app.name', 'Laravel') }}
-            </div>
-
             <div class="content">
                 <div class="title m-b-md">
                     Laravel <small>with</small> Turbolinks
+                </div>
+
+                <div class="sub-text">
+                    Current app: <span class="strong">{{ config('app.name', 'Laravel') }}</span>
                 </div>
 
                 <div class="sub-text">
